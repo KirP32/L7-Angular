@@ -1,0 +1,69 @@
+@use "../../scss/mixins/typography";
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+
+.nav__container {
+    height: 100%;
+    display: flex;
+    flex-direction: var(--direction_column);
+    width: var(--nav_container_width, 360px);
+    background-color: var(--md-sys-color-surface);
+    border-radius: var(--border__radius__bar, 16px);
+    padding-left: var(--nav-container__padding__left);
+    .headline {
+        color: var(--md-sys-color-on-surface-variant);
+        display: var(--headline__bar);
+        justify-content: var(--justify_content);
+        @include typography.title-small;
+        padding: var(--headling__padding__rail, 4px 16px 0px 16px);
+        margin: 16px 0px 0px 0px;
+        &_special {
+            margin-top: 10px;
+            padding-left: var(--headline__pading__left, 16px);
+        }
+    }
+
+    &__personal {
+        display: var(--display__personal);
+    }
+    &__mail {
+        display: var(--mav__container__mail__display);
+        width: var(--nav_container_width);
+        &::after {
+            margin-left: 8px;
+            content: "";
+            margin-top: 3px;
+            position: relative;
+            display: var(--display__personal, block);
+            bottom: 0;
+            left: 0;
+            width: 91%;
+            height: 2px;
+            background-color: hsl(0, 0%, 70%);
+            margin-left: 16px;
+            margin-right: 16px;
+        }
+        &__object {
+            display: flex;
+            flex-direction: var(--nav_element_direction);
+            & > * {
+                margin: 0;
+            }
+        }
+    }
+}
+.material-symbols-outlined {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: var(--icon__padding__rail, 16px);
+}
+
+.nav_label_text {
+    @include typography.label-large;
+    padding-left: var(--text__padding__rail, 12px);
+    text-align: var(--text_align_rail);
+    padding-top: var(--nav_label_text__padding__rail);
+    @media (max-width: 800px) {
+        @include typography.label-medium;
+    }
+}

@@ -1,0 +1,147 @@
+@use "../scss/mixins/typography";
+
+html,
+body {
+    margin: 0;
+    --columns: 12;
+    --offset: 0px; // по желанию
+
+    display: grid;
+
+    grid-template-columns: var(--offset) repeat(var(--columns), 1fr) var(--offset);
+    grid-auto-rows: min-content;
+
+    column-gap: var(--_column_gap, 24px);
+}
+
+@mixin ts($color: none, $area: none) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color;
+    grid-area: $area;
+}
+
+app-root {
+    :root {
+        grid-column: 1/-1; // не переопределяется
+    }
+}
+
+.wrapper {
+    &__flex {
+        width: 100%;
+        height: 100dvh;
+        grid-column: 1/-1;
+        $breakpoint-rail: 800px;
+        $breakpoint-bar: 550px;
+
+        --_columns__grid__area: 360px 1fr;
+        --_rows__grid__area: 1fr 1fr 1fr;
+        --headline__bar: flex;
+        --direction_column: column;
+
+        --for__ripple__height: var(--height__rail);
+        --for__ripple__width: var(--width__rail);
+
+        --width__rail: 336px;
+        --mat__nav__list__display: contents;
+        --height__rail: 56px;
+        @media (max-width: #{$breakpoint-rail}) {
+            --_columns__grid__area: 80px 1fr;
+            --display__personal: none;
+            --nav_container_width: 80px;
+            --direction__nav_text: column;
+            --text_align_rail: center;
+            --icon__padding__rail: 0;
+            --text__padding__rail: 0;
+            --headline__rail__padding: 24px;
+            --height__rail: 32px;
+            --width__rail: 56px;
+            --nav_label_text__padding__rail: 4px;
+            --margin__top__element: 12px;
+            --headline__pading__left: 12px;
+            --direction_column: none;
+            --nav-container__padding__left: 0;
+            --justify_content: center;
+            --mat__nav__list__display: block;
+            --headling__padding__rail: 4px 4px 0px 4px;
+            --for__ripple__margin__top: 15px;
+        }
+        @media (max-width: #{$breakpoint-bar}) {
+            --_columns__grid__area: 1fr;
+            --_rows__grid__area: 1fr 1fr 80px 1fr;
+            grid-template-areas: "header" "text" "nav" "footer";
+            --nav_container_width: 100%;
+            --mat__nav__list__display: grid;
+            --grid-template-columns: 1fr 1fr 1fr 1fr;
+            --place__items__nav: center;
+            --headline__bar: none;
+            --mav__container__mail__display: flex;
+            --height__rail: 32px;
+            --width__rail: 64px;
+            --mav__container__mail__display: grid;
+            --border__radius__bar: 0px;
+            --margin__top__element: 0;
+            --show: none;
+        }
+        display: grid;
+        grid-template-columns: var(--_columns__grid__area);
+        grid-template-rows: var(--_rows__grid__area);
+        grid-template-areas: "nav header" "nav text" "nav footer";
+
+        background-color: #322f37;
+    }
+}
+
+.container {
+    &__main-info {
+        &__header {
+            @include ts(orangered, header);
+        }
+        &__text {
+            @include ts(lightcoral, text);
+        }
+        &__footer {
+            @include ts(lightgreen, footer);
+        }
+    }
+}
+
+app-nav-bar {
+    grid-area: nav;
+}
+
+.AddButton {
+    height: 25px;
+}
+
+.container__books {
+    display: grid;
+    grid-column: 1/-1;
+    height: 100vh;
+    grid-template-rows: 25px 1fr;
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-rows: repeat(auto-fill, 175px);
+        gap: 32px;
+        padding: 15px;
+    }
+}
+
+.book {
+    background-color: var(--md-sys-color-surface);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    color: var(--md-sys-color-on-surface-variant);
+    border-radius: 16px;
+    text-align: center;
+    & h4{
+        color: var(--md-sys-color-on-surface);
+        padding: 0px 8px 0px 8px;
+        @include typography.headline-large;
+    }
+    & h3 {
+        @include typography.headline-medium;
+    }
+}

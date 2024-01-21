@@ -1,0 +1,66 @@
+@use "../mixins/typography";
+
+:root {
+   .mdc-list-item__primary-text {
+      display: flex;
+      --mdc-list-list-item-hover-label-text-color: var(--md-sys-color-on-secondary-container);
+      color: var(--md-sys-color-on-surface-variant);
+      flex-direction: var(--direction__nav_text);
+   }
+   .mat-mdc-list-item-interactive::before {
+      --mdc-list-list-item-hover-state-layer-color: var(--md-sys-color-on-secondary-container);
+      --mdc-list-list-item-hover-state-layer-opacity: 0.08;
+      border-radius: 56px;
+      height: var(--height__rail, 56px);
+      width: var(--width__rail, 336px);
+   }
+   .mat-mdc-list-base.mat-mdc-list-base .mdc-list-item--activated .mdc-list-item__primary-text {
+      color: var(--md-sys-color-on-secondary-container);
+   }
+
+   mat-nav-list {
+      padding: 0px 16px 0px 12px;
+      display: var(--mat__nav__list__display);
+      place-items: var(--place__items__nav);
+      grid-template-columns: var(--grid-template-columns);
+      a {
+         padding: 0px;
+         height: var(--height__rail);
+         width: var(--width__rail);
+         margin-top: var(--margin__top__element, 0px);
+         --mdc-list-list-item-one-line-container-height: 56px;
+         border-radius: var(--nav-container__padding__left, 56px);
+      }
+   }
+   /* mat-nav-list:first-of-type::after {
+      content: "";
+      margin-top: 3px;
+      position: relative;
+      display: block;
+      bottom: 0;
+      left: 0;
+      width: 91%;
+      height: 2px;
+      background-color: hsl(0, 0%, 70%);
+      margin-left: 16px;
+      margin-right: 16px;
+  } */
+}
+
+.mat-ripple-element .mat-ripple-element .mat-ripple-element{
+   //width: --width__rail;
+   //height: --height__rail;
+   margin-bottom: 25px;
+
+}
+.for__ripple {
+   position: absolute !important;
+   box-sizing: border-box;
+   width: var(--for__ripple__width);
+   height: var(--for__ripple__height);
+   display: var(--show);
+   border-radius: 56px;
+   &:not(:first-child) {
+      margin-top: var(--for__ripple__margin__top);
+   }
+}

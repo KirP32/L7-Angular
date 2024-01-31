@@ -37,7 +37,7 @@ app-root {
         $breakpoint-bar: 550px;
 
         --_columns__grid__area: 360px 1fr;
-        --_rows__grid__area: 1fr 1fr 1fr;
+        //--_rows__grid__area: 1fr 1fr 1fr;
         --headline__bar: flex;
         --direction_column: column;
 
@@ -71,7 +71,7 @@ app-root {
         @media (max-width: #{$breakpoint-bar}) {
             --_columns__grid__area: 1fr;
             --_rows__grid__area: 1fr 1fr 80px 1fr;
-            grid-template-areas: "header" "text" "nav" "footer";
+            grid-template-areas: "nav" "router" "router" "router";
             --nav_container_width: 100%;
             --mat__nav__list__display: grid;
             --grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -88,7 +88,7 @@ app-root {
         display: grid;
         grid-template-columns: var(--_columns__grid__area);
         grid-template-rows: var(--_rows__grid__area);
-        grid-template-areas: "nav header" "nav text" "nav footer";
+        grid-template-areas: "nav router" "nav router" "nav router";
 
         background-color: #322f37;
     }
@@ -136,7 +136,7 @@ app-nav-bar {
     color: var(--md-sys-color-on-surface-variant);
     border-radius: 16px;
     text-align: center;
-    & h4{
+    & h4 {
         color: var(--md-sys-color-on-surface);
         padding: 0px 8px 0px 8px;
         @include typography.headline-large;

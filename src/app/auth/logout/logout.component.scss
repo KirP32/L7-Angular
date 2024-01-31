@@ -1,0 +1,12 @@
+@use "../../../scss/mixins/typography";
+
+.container__logout {
+    height: 100dvh;
+    background-color: var(--md-sys-color-surface);
+    border-radius: var(--border__radius__bar, 16px);
+    color: var(--md-sys-color-on-surface-variant);
+    @include typography.title-large;
+    place-content: center;
+    display: flex;
+    place-items: center;
+}

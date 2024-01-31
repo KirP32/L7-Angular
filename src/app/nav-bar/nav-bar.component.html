@@ -3,7 +3,7 @@
         <h4 class="headline">Mail</h4>
         <mat-nav-list>
             @for (link of MailList; track link) {
-                <a mat-list-item [activated]="link.id === str" (click)="str = link.id">
+                <a mat-list-item routerLink={{link.rlink}} [activated]="link.id === str" (click)="str = link.id">
                     <span class="material-symbols-outlined">
                         {{link.icon}}
                     </span>
@@ -12,9 +12,9 @@
             }
         </mat-nav-list>
     </div>
-    <div class="nav__container__personal">
-        <h4 class="headline headline_special">Personal folders</h4>
-        <mat-nav-list>
+    <div class="nav__container__personal" *ngIf="authService.isAuthorized()">
+        <h4 class="headline headline_special">Welcome, {{authService._username}}</h4>
+        <!-- <mat-nav-list>
             @for (link of PersonalList; track link) {
             <a mat-list-item [activated]="link.id === str" (click)="str = link.id">
                 <span class="material-symbols-outlined">
@@ -23,6 +23,6 @@
                 <div class="nav_label_text">{{link.label}}</div>
             </a>
             }
-        </mat-nav-list>
+        </mat-nav-list> -->
     </div>
 </div>

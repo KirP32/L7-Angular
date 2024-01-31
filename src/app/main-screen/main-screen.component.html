@@ -1,1 +1,13 @@
-<p>main screnn works!</p>
+<div class="container__books">
+    <div class="wrapper__button"><button class="button item" mat-flat-button (click)="addButtonBook()">Add Book</button>
+    </div>
+
+    <div class="container__books__grid">
+        @for (book of books; track book) {
+        <div class="book" (click)="edit_book(book)">
+            <h4>{{book.name}}</h4>
+            <h5>{{book.author}}</h5>
+        </div>
+        }
+    </div>
+</div>

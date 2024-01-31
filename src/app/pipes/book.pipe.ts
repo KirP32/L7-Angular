@@ -7,7 +7,7 @@ import { Book } from '../interfaces/book';
 })
 export class BookPipe implements PipeTransform {
   public transform(item: Book, ...args: unknown[]): string {
-    return item.name + " " + item.author;
+    return item.name + " " + item.author_name;
   }
 
 }

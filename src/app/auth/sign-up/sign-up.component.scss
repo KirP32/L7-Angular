@@ -1,0 +1,86 @@
+@use "../../../scss/mixins/typography";
+
+.container__registration {
+    height: 100dvh;
+    background-color: var(--md-sys-color-surface);
+    border-radius: var(--border__radius__bar, 16px);
+    color: var(--md-sys-color-on-surface-variant);
+    &__label {
+        text-align: center;
+        @include typography.title-large;
+        padding-top: 15px;
+    }
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        place-content: center;
+        place-items: center;
+        padding-top: 80px;
+        &__name {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            place-content: center;
+            place-items: center;
+        }
+        &__details {
+            gap: 18px;
+            padding-top: 15px;
+            &__errors {
+                display: flex;
+                flex-direction: column;
+            }
+            padding-top: 45px;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+.email__errors {
+    color: red;
+    @include typography.title-large;
+    place-content: center;
+    display: flex;
+    place-items: center;
+    padding-top: 24px;
+}
+.input {
+    border: none;
+    background-color: var(--md-sys-color-surface-container-high);
+    border-radius: 28px;
+    color: var(--md-sys-color-primary);
+    @include typography.label-large;
+    padding: 24px;
+}
+.finish__button {
+    border: none;
+    border-radius: 20px;
+    height: 40px;
+    background-color: var(--md-sys-color-surface-container-high);
+    @include typography.label-large;
+    color: var(--md-sys-color-primary);
+    padding: 0px 24px 0px 24px;
+}
+.d {
+    height: 68px;
+}
+.input-birthday {
+    width: 163px
+}
+.item {
+    position: relative;
+    isolation: isolate;
+    max-height: 40px;
+    &::before {
+        content: " ";
+        position: absolute;
+        z-index: -1;
+        background: currentColor;
+        inset: 0;
+        opacity: var(--state-layer-opacity, 0);
+        border-radius: 20px;
+    }
+    &:hover {
+        --state-layer-opacity: 0.25;
+    }
+}

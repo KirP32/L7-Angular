@@ -21,6 +21,7 @@ export class MainScreenComponent implements OnInit {
     private router: Router,
   ) {
   }
+  private flag = false;
   public ngOnInit(): void {
     console.log("ngOnInit called");
     this.loadbooks();
@@ -45,12 +46,24 @@ export class MainScreenComponent implements OnInit {
   }
 
   public edit_book(book: IBook): void {
-    const dialogRef = this.dialog.open(AddButtonComponent, { data: book });
-    dialogRef.afterClosed().subscribe((result: any) => {
-      if (result) {
-        this.bookService.edit_book_interface(result);
+    setTimeout(() => {
+      if (this.flag == false) {
+        const dialogRef = this.dialog.open(AddButtonComponent, { data: book });
+        dialogRef.afterClosed().subscribe((result: IBook) => {
+          if (result) {
+            this.bookService.edit_book_interface(result).subscribe({
+              next: () => {
+                this.ngOnInit();
+              },
+              error: (_) => {
+                alert(_);
+              }
+            });
+          }
+        });
       }
-    });
+    }, 500);
+    this.flag = false;
   }
 
   private loadbooks() {
@@ -58,6 +71,18 @@ export class MainScreenComponent implements OnInit {
     this.bookService.getbooks().subscribe(item => {
       console.log(item);
       this.books = item;
+    });
+  }
+  public deleteBook(item: IBook): void {
+    this.flag = true;
+    this.bookService.deleteBook(item).subscribe({
+      next: () => {
+        alert("Book deleted successfully");
+        this.ngOnInit();
+      },
+      error: (_) => {
+        alert(_);
+      }
     });
   }
 }

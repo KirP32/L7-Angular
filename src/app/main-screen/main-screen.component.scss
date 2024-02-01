@@ -2,6 +2,7 @@
 
 
 .container__books {
+    overflow: hidden;
     display: grid;
     grid-column: 1/-1;
     height: 100vh;
@@ -61,4 +62,7 @@
     &:hover {
         --state-layer-opacity: 0.25;
     }
+}
+.name {
+    overflow: hidden;
 }

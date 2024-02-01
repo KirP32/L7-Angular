@@ -1,12 +1,19 @@
 <div class="container__books">
-    <div class="wrapper__button"><button class="button item" mat-flat-button (click)="addButtonBook()">Add Book</button>
+    <div class="wrapper__button">
+        <div class="a">
+            <button class="button item" mat-flat-button (click)="addButtonBook()">Add Book</button>
+        </div>
+        <!-- <div class="b">
+            <button class="button item" mat-flat-button (click)="deleteBook()">Delete</button>
+            <input type="text" placeholder="Book's name" class="input" id="input-name">
+        </div> -->
     </div>
 
     <div class="container__books__grid">
         @for (book of books; track book) {
-        <div class="book" (click)="edit_book(book)">
-            <h4>{{book.name}}</h4>
-            <h5>{{book.author}}</h5>
+        <div class="book" (click)="edit_book(book)" (dblclick)="deleteBook(book)">
+            <h4 class="name">{{book.name}}</h4>
+            <h5 class="author">{{book.author}}</h5>
         </div>
         }
     </div>

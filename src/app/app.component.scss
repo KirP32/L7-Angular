@@ -25,7 +25,7 @@ body {
 
 app-root {
     :root {
-        grid-column: 1/-1; // не переопределяется
+        grid-column: 1/-1;
     }
 }
 
@@ -38,7 +38,6 @@ app-root {
         $breakpoint-bar: 550px;
 
         --_columns__grid__area: 360px 1fr;
-        //--_rows__grid__area: 1fr 1fr 1fr;
         --headline__bar: flex;
         --direction_column: column;
 
@@ -70,8 +69,9 @@ app-root {
             --for__ripple__margin__top: 15px;
         }
         @media (max-width: #{$breakpoint-bar}) {
+            --overflow: none;
             --_columns__grid__area: 1fr;
-            --_rows__grid__area: 1fr 1fr 80px 1fr;
+            --_rows__grid__area: 80px 1fr 1fr 1fr;
             grid-template-areas: "nav" "router" "router" "router";
             --nav_container_width: 100%;
             --mat__nav__list__display: grid;

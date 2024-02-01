@@ -1,26 +1,28 @@
 @use "../../scss/mixins/typography";
 
-
 .container__books {
-    overflow: hidden;
+    overflow: var(--overflow, hidden);
     display: grid;
     grid-column: 1/-1;
     height: 100vh;
     grid-template-rows: 25px 1fr;
     &__grid {
-        padding-top: 50px;
+        background-color: #322f37;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         grid-template-rows: repeat(auto-fill, 175px);
         gap: 32px;
         padding: 15px;
-        margin-top: 15px;
+        margin-top: 58px;
     }
 }
 
 .wrapper__button {
-    display: flex;
+    margin-top: 46px;
+    display: grid;
     place-content: center;
+    place-items: center;
+    grid-template-columns: 1fr 1fr;
 }
 
 .book {
@@ -29,7 +31,7 @@
     color: var(--md-sys-color-on-surface-variant);
     border-radius: 16px;
     text-align: center;
-    & h4{
+    & h4 {
         color: var(--md-sys-color-on-surface);
         padding: 0px 8px 0px 8px;
     }
@@ -65,4 +67,18 @@
 }
 .name {
     overflow: hidden;
+}
+.b {
+    display: flex;
+    flex-direction: column;
+}
+.input {
+    border: none;
+    background-color: var(--md-sys-color-surface-container-high);
+    border-radius: 28px;
+    color: var(--md-sys-color-primary);
+    @include typography.label-large;
+    padding: 4px;
+    text-align: center;
+    margin-top: 8px;
 }

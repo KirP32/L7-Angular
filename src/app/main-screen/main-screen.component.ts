@@ -6,10 +6,12 @@ import { AddButtonComponent } from './dialogs/add-button/add-button.component';
 import { IBook } from '../interfaces/book';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-main-screen',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './main-screen.component.html',
   styleUrl: './main-screen.component.scss'
 })
@@ -62,7 +64,7 @@ export class MainScreenComponent implements OnInit {
           }
         });
       }
-    }, 500);
+    }, 200);
     this.flag = false;
   }
 
@@ -75,9 +77,24 @@ export class MainScreenComponent implements OnInit {
   }
   public deleteBook(item: IBook): void {
     this.flag = true;
-    this.bookService.deleteBook(item).subscribe({
+    if (confirm(`Удалить \n ${item.name} ?`)) {
+      this.bookService.deleteBook(item).subscribe({
+        next: () => {
+          console.log("Book deleted successfully");
+          this.ngOnInit();
+        },
+        error: (_) => {
+          alert(_);
+        }
+      });
+    }
+  }
+  public generateBooks(): void {
+    let nBooks = document.querySelector("#input-number") as HTMLInputElement;
+    let number = parseInt(nBooks.value);
+    this.bookService.generateBooks(number).subscribe({
       next: () => {
-        alert("Book deleted successfully");
+        console.log("Book generated successfully");
         this.ngOnInit();
       },
       error: (_) => {

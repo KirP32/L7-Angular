@@ -76,4 +76,7 @@ export class BookService {
   public deleteBook (item: IBook): Observable<any> {
     return this.httpClient.delete(environment.apiUrl + `books/${item.id}`)
   }
+  public generateBooks(item: number): Observable<any> {
+    return this.httpClient.post(environment.apiUrl + `books/generate/${item}`, JSON.stringify(item))
+  }
 }

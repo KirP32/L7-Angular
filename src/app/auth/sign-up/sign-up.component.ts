@@ -8,9 +8,10 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.scss'
+  styleUrl: './sign-up.component.scss',
 })
 export class SignUpComponent {
+  blinkState: string = 'normal';
   constructor(
     public userSevice: AuthService,
     private router: Router,

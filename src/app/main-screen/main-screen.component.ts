@@ -30,6 +30,7 @@ export class MainScreenComponent implements OnInit {
   }
   public addButtonBook(): void {
     const dialogRef = this.dialog.open(AddButtonComponent, {
+      width: '300px'
     });
 
     dialogRef.afterClosed().subscribe((result: Book) => {
@@ -95,6 +96,17 @@ export class MainScreenComponent implements OnInit {
     this.bookService.generateBooks(number).subscribe({
       next: () => {
         console.log("Book generated successfully");
+        this.ngOnInit();
+      },
+      error: (_) => {
+        alert(_);
+      }
+    });
+  }
+  public deleteAllBooks(): void {
+    this.bookService.deleteAllBooks().subscribe({
+      next: () => {
+        console.log("All books deleted successfully");
         this.ngOnInit();
       },
       error: (_) => {

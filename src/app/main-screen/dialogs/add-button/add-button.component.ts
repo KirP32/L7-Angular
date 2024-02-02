@@ -70,8 +70,4 @@ export class AddButtonComponent implements OnInit {
     }
     this.dialogRef.close(book);
   }
-
-  
-
-
 }

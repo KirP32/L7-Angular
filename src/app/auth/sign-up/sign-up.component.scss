@@ -84,3 +84,21 @@
         --state-layer-opacity: 0.25;
     }
 }
+.confirm {
+    animation: confirm 1s ease-in-out;
+}
+
+@keyframes confirm
+{
+    0% {
+        transform: scale(1.2);
+    }
+    25% {
+        background-color: green;
+        transform: scale(1.2) rotate(40deg);
+    }
+    50% {
+        background-color: lightgreen;
+        transform: scale(1.2) rotate(-40deg);
+    }
+}

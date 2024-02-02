@@ -1,16 +1,8 @@
 @use "../../../../scss/mixins/typography";
-
-.mat-mdc-dialog-surface.mdc-dialog__surface{
-    background-color: var(--md-sys-color-surface-container-low) !important;
-    --mdc-dialog-container-shape: 28px;
-}
-.mat-mdc-dialog-container .mdc-dialog__surface {
-    background-color: var(--md-sys-color-surface-container-low) !important;
-    --mdc-dialog-container-shape: 28px;
-}
 .headline {
     @include typography.headline-small;
     color: var(--md-sys-color-on-surface);
+    text-align: center;
 }
 
 .support__text {
@@ -45,5 +37,26 @@
     }
     &:hover {
         --state-layer-opacity: 0.25;
+    }
+}
+:host {
+    background-color: black !important;
+}
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+    background-color: var(--md-sys-color-surface-container-low) !important;
+    --mdc-dialog-container-shape: 28px;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper
+{
+    background-color: var(--md-sys-color-surface-container-highest) !important;
+}
+
+.wrapper {
+    width: 300px;
+    &__form {
+        display: flex;
+        flex-direction: column;
     }
 }
